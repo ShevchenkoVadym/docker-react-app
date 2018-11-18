@@ -10,12 +10,10 @@ services:
     ports:
       - 6379:6379
   
-  server:
+  api:
     build:
       context: ./server
       dockerfile: Dockerfile.dev
-    ports:
-      - 3000:3000
     volumes:
       - ./server:/app
       - /app/node_modules
