@@ -10,6 +10,13 @@ services:
     ports:
       - 6379:6379
   
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3111:80
+  
   api:
     build:
       context: ./server
