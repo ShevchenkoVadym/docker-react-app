@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t vadymshevchenko/docker-react-client-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run vadymshevchenko/docker-react-client-test npm test -- --coverage
+
+after_success:
+  - docker build -t vadymshevchenko/react-client ./client
+  - docker build -t vadymshevchenko/react-nginx ./nginx
+  - docker build -t vadymshevchenko/react-server ./server
+  - docker build -t vadymshevchenko/react-worker ./worker
