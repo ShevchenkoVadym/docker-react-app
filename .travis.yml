@@ -13,3 +13,12 @@ after_success:
   - docker build -t vadymshevchenko/react-nginx ./nginx
   - docker build -t vadymshevchenko/react-server ./server
   - docker build -t vadymshevchenko/react-worker ./worker
+
+  # Log in into Docker CLI using variables defined in travis CI for current repository
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # Take those images and push them to Docker Hub
+  - docker push vadymshevchenko/react-client
+  - docker push vadymshevchenko/react-nginx
+  - docker push vadymshevchenko/react-server
+  - docker push vadymshevchenko/react-worker
