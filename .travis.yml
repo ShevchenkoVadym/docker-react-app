@@ -22,3 +22,17 @@ after_success:
   - docker push vadymshevchenko/react-nginx
   - docker push vadymshevchenko/react-server
   - docker push vadymshevchenko/react-worker
+
+  # Deploy to AWS BeanStalk
+# deploy:
+#   provider: elasticbeanstalk
+#   region: us-west-1
+#   app: docker-react-app
+#   env: "need_to_configure"
+#   bucket_name: "need_to_configure"
+#   bucket_path: docker-react
+#   on: 
+#     branch: master
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key:
+#     secure: $AWS_SECRET_KEY
